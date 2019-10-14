@@ -28,7 +28,15 @@ var books []Book
 
 func getBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books[0])
+	params := mux.Vars(r)
+
+	for _, item := range books {
+		if item.ID == params["id"] {
+			json.NewEncoder(w).Encode(item)
+			return
+		}
+	}
+	json.NewEncoder(w).Encode(&Book{})
 }
 
 // get all books
@@ -48,6 +56,6 @@ func main() {
 
 	// route handlers
 	router.HandleFunc("/api/books", getBooks).Methods("GET")
-	router.HandleFunc("/api/book", getBook).Methods("GET")
+	router.HandleFunc("/api/book/{id}", getBook).Methods("GET")
 	log.Fatal(http.ListenAndServe(":9000", router))
 }
