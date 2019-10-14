@@ -26,6 +26,11 @@ type Author struct {
 // Init books as a slice
 var books []Book
 
+func getBook(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(books[0])
+}
+
 // get all books
 func getBooks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
@@ -43,5 +48,6 @@ func main() {
 
 	// route handlers
 	router.HandleFunc("/api/books", getBooks).Methods("GET")
+	router.HandleFunc("/api/book", getBook).Methods("GET")
 	log.Fatal(http.ListenAndServe(":9000", router))
 }
