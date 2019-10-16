@@ -55,6 +55,7 @@ func main() {
 	books = append(books, Book{ID: "2", Isbn: "448743", Title: "Book One", Author: &Author{Firstname: "Stven", Lastname: "Doe"}})
 
 	// route handlers
+
 	router.HandleFunc("/api/books", getBooks).Methods("GET")
 	router.HandleFunc("/api/book/{id}", getBook).Methods("GET")
 	log.Fatal(http.ListenAndServe(":9000", router))
