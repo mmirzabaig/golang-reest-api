@@ -45,6 +45,12 @@ func getBooks(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(books)
 }
 
+// add a book
+func addBook(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(books)
+}
+
 func main() {
 	fmt.Println("Hello World!")
 	// init Router
@@ -60,5 +66,6 @@ func main() {
 
 	router.HandleFunc("/api/books", getBooks).Methods("GET")
 	router.HandleFunc("/api/book/{id}", getBook).Methods("GET")
+	router.HandleFunc("/api/addBook", getBook).Methods("POST")
 	log.Fatal(http.ListenAndServe(":9000", router))
 }
