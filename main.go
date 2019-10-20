@@ -52,7 +52,9 @@ func main() {
 
 	// mock data
 	books = append(books, Book{ID: "1", Isbn: "448743", Title: "Book One", Author: &Author{Firstname: "John", Lastname: "Smith"}})
-	books = append(books, Book{ID: "2", Isbn: "448743", Title: "Book One", Author: &Author{Firstname: "Stven", Lastname: "Doe"}})
+	books = append(books, Book{ID: "2", Isbn: "448744", Title: "Book Two", Author: &Author{Firstname: "Stven", Lastname: "Doe"}})
+	books = append(books, Book{ID: "3", Isbn: "448745", Title: "Book Three", Author: &Author{Firstname: "Mirza", Lastname: "Baig"}})
+	books = append(books, Book{ID: "4", Isbn: "448746", Title: "Book Four", Author: &Author{Firstname: "Ben", Lastname: "Hankins"}})
 
 	// route handlers
 
